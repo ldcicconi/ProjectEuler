@@ -6,28 +6,32 @@ import (
 	"time"
 )
 
-var funcs []func()
+var funcs map[string]func()
 
-var problem int
+var problem string
 
 func init() {
-	flag.IntVar(&problem, "problem", 1, "which ProjectEuler problem to run")
+	flag.StringVar(&problem, "problem", "p1", "which ProjectEuler problem to run")
 	flag.Parse()
+
+	funcs = make(map[string]func())
+	funcs["p1"] = p1
+	funcs["p2"] = p2
+	funcs["p3"] = p3
+
 	fmt.Println("Problem:", problem)
 	fmt.Println()
-
-	funcs = append(funcs, p1)
-	funcs = append(funcs, p2)
 }
 
 func main() {
-	if len(funcs) < problem {
+	p, ok := funcs[problem]
+	if !ok {
 		fmt.Println("That problem is not registered.")
 		return
 	}
 
 	startTime := time.Now()
-	funcs[problem-1]()
+	p()
 	delta := time.Since(startTime)
-	fmt.Printf("\nDelta for problem %d: %s\n", problem, delta)
+	fmt.Printf("\nDelta for problem %s: %s\n", problem, delta)
 }
