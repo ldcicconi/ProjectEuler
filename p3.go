@@ -16,7 +16,7 @@ func primeFactorize(x int64) (primeFactors []int64) {
 	var f int64 = 2
 	inc := func(i *int64) {
 		if *i == 2 {
-			f++
+			*i++
 		} else {
 			*i += 2
 		}
