@@ -21,7 +21,7 @@ func sumOfMultiples3And5(upperLimit int) (sum int) {
 	return
 }
 
-func main() {
+func p1() {
 	// Timing how long this takes just out of curiosity
 	startTime := time.Now()
 	sumBelowOneThou := sumOfMultiples3And5(1000)
