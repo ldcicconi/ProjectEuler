@@ -18,6 +18,7 @@ func init() {
 	funcs["p1"] = p1
 	funcs["p2"] = p2
 	funcs["p3"] = p3
+	funcs["p5"] = p5
 
 	fmt.Println("Problem:", problem)
 	fmt.Println()
